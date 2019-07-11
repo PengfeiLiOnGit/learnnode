@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bfb4ef86-75f1-4dd7-b366-82318803750f" name="Default Changelist" comment="" />
+    <list default="true" id="bfb4ef86-75f1-4dd7-b366-82318803750f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -34,14 +37,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="343">
+              <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -96,6 +108,7 @@
         <option value="$PROJECT_DIR$/node_modules/foo/package.json" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/node_modules/foo/lib/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -123,17 +136,6 @@
             <path>
               <item name="node_test" type="b2602c69:ProjectViewProjectNode" />
               <item name="node_test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="node_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="node_test" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="node_test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="node_test" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="foo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="node_test" type="b2602c69:ProjectViewProjectNode" />
@@ -207,7 +209,7 @@
       <workItem from="1562745429164" duration="1120000" />
       <workItem from="1562746566735" duration="7957000" />
       <workItem from="1562763685771" duration="2793000" />
-      <workItem from="1562768923413" duration="12302000" />
+      <workItem from="1562768923413" duration="12467000" />
     </task>
     <task id="LOCAL-00001" summary="test node init">
       <created>1562835974615</created>
@@ -216,11 +218,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562835974615</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="test node init">
+      <created>1562836210240</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1562836210240</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24172000" />
+    <option name="totallyTimeSpent" value="24337000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -235,10 +244,10 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.678501" visible="true" weight="0.16491044" />
-      <window_info id="Structure" order="1" sideWeight="0.32149902" side_tool="true" visible="true" weight="0.16491044" />
-      <window_info id="npm" order="2" sideWeight="0.50091076" side_tool="true" weight="0.16491044" />
-      <window_info id="Favorites" order="3" sideWeight="0.32148626" side_tool="true" weight="0.16491044" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.67898834" visible="true" weight="0.16491044" />
+      <window_info id="Structure" order="1" sideWeight="0.32101166" side_tool="true" visible="true" weight="0.16491044" />
+      <window_info id="npm" order="2" sideWeight="0.32142857" side_tool="true" weight="0.16491044" />
+      <window_info id="Favorites" order="3" sideWeight="0.32142857" side_tool="true" weight="0.16491044" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3575298" />
@@ -247,9 +256,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.44251627" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.45010847" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.5444685" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -316,13 +325,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-525" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="343">
+          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
         </state>
       </provider>
     </entry>
