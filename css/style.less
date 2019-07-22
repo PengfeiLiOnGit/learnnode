@@ -1,0 +1,269 @@
+// 导入
+//@import "_import";
+@import (reference) "_import";
+@import "style-me.css";
+
+@color: "#fff";
+// 导入变量样式
+._import_class{
+  color : @_import_color;
+}
+// 定义一个常量值
+@val : "#000";
+// 定义变量
+// 1 .选择器可以引用任何变量，它是在编译时构建的。变量名称必须放在用@符号前缀的花括号（{}）内。
+@selector : h2;
+@{selector}{
+  background: @val;
+}
+// 2 .url
+@images : "http://xxx";// 定义一个host
+._url{
+  background: url("@{images}/xxxx.png");
+}
+// 3. import
+@host : "./";// 定义一个host或位置
+@import "@{host}_import2.less";
+
+// 4. 属性引用（注意是属性引用不是值引用）
+// 定义一个属性
+@property_color : color;
+._shuxing_class{
+  background-@{property_color}: @color;
+}
+
+// 变量引用变量
+._val_val_class{
+  @_val_color : "color";
+  color: @@_val_color;// color 指向全局定义的变量color
+
+  ._inner_val_class{
+    @color : "#002";
+    color : @color;
+    @color:"#003";// 输出为003
+  }
+}
+
+// 延迟加载
+
+
+// 嵌套模式
+
+// 命名空间和访问器
+._class1{
+  ._class2{
+    ._class3(@param){
+      font-size: @param;
+      color: green;
+    }
+  }
+}
+.myclass {
+  ._class1 > ._class2 > ._class3(20px);
+}
+._class4(@p){
+  color: @p;
+}
+
+.class4{
+  ._class4(green);
+}
+// 访问器
+@var : @a;
+@a : 15px;
+.f_class{
+  // 作用域内定义,var 变量不会提升
+  @a : 20px;
+  font-size: @var;
+}
+.f_class_2{
+  font-size: @var;
+}
+// 使用注释
+
+/* It displays the
+green color! 此注释会保留*/
+.container {
+  h1 {
+    font-size: 25px;
+    color: #E45456;
+  }
+
+  p {
+    font-size: 25px;
+    color: #3C7949;
+  }
+
+  .myclass {
+    h1 {
+      // 算数运算符
+      font-size: 25px * 4;
+      color: #E45456;
+    }
+
+    p {
+      // 函数
+      font-size: ceil(26.4)px;
+      // 转义符
+      color: ~"green";
+    }
+  }
+}
+// 函数 （园函数、floor函数、ceil函数、百分比函数）
+// http://lesscss.cn/functions/#functions-overview 函数官方地址
+
+// 扩展 使用extend 伪类（输出类似css样式中定义的 ,,,）
+._extend {
+  &:extend(._extend_self);
+  color: @color;
+}
+._extend_self{
+  background: @color;
+}
+
+// 混合 mixins（复用）
+._mixins{
+  color: @color;
+}
+._mixins_{
+  color : #E45456;
+  ._mixins;
+  ._mixins_none;
+  ._mixins_selector;
+}
+
+// 混合 mix基类不输出(增加小括号)
+._mixins_none(){
+  color: green;
+}
+
+// 混合选择器使用伪类
+._mixins_selector (){
+  &:before{
+    content: "";
+  }
+}
+
+// mixin 命名空间
+._mixin_name() {
+  ._minix_inner{
+      color:@color;
+  }
+}
+
+._minx_name_{
+ ._mixin_name > ._minix_inner;
+}
+
+// !import 覆盖特定属性
+._minix_import(){
+  background: @color;
+}
+
+._minix_import_{
+    ._minix_import !important;
+}
+
+// 混合参数 参数可以使用逗号或分号分隔
+._minix_param(@param : "#000";@param2){
+  color: @param;
+  font-size: @param2;
+}
+
+._minix_params{
+  ._minix_param(@color,12px)
+}
+
+// 使用命名参数（）
+._minix_params2{
+  ._minix_param(@param2: 18px;)
+}
+
+// @arguments
+.box-shadow(@x: 0; @y: 0; @height: 3px; @width: 3px) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+.myclass {
+  .box-shadow(2px; 2px);
+}
+
+// 可变参数
+.mixin(@x: 1; ...){
+  @x : 3;
+  box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+}
+
+.myclass2 {
+  .mixin(1;2;3;4);
+}
+
+// 模式匹配
+// darken /linghten 为less 定义的函数
+// 根据第一个参数判断使用哪种混入类
+.mixin_modal(black; @color) {
+  color: darken(@color, 15%);
+}
+.mixin_modal(light; @color) {
+  color: lighten(@color, 15%);
+}
+
+@color-new: black;
+
+.line {
+  .mixin_modal(@color-new; #FF0000);
+}
+
+// 混合函数 , 变量会被继承，如果是在作用域中已经生成变量，则不会进行覆盖
+.min_scope {
+  @bgColor : "#ff0";
+}
+.scope_{
+  @bgColor :"#000";
+  .min_scope();
+  color: @bgColor;
+}
+
+// 返回值 minxi 作为函数,返回变量混合至作用域中
+.padding(@x, @y) {
+  @padding: ((@x + @y) / 2);
+  @margin : (@x + @y);
+}
+
+.padding_class{
+  .padding(80px, 120px);  // call to the mixin
+  padding-left: @padding; //  returns the value
+  margin: @margin;
+}
+
+// 多重定义mixin
+.outerMixin(@value) {
+  .nestedMixin() {
+    font-size: @value;
+  }
+}
+
+.out_class {
+  .outerMixin(20);
+  .nestedMixin();
+}
+
+// 自定义样式规则
+@rule-list :{
+  @color-rule : #000;
+  .rule_one {
+    color: @color-rule;
+  };
+  .rule_two {
+    background: #E45456;
+  }
+}
+
+@rule-list();
+.cont {
+  .rule_one();
+  .rule_two();
+}

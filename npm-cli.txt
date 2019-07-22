@@ -1,0 +1,6 @@
+npm --
+    search
+    view
+    install
+    root -g
+    config set prefix ""

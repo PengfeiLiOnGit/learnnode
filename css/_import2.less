@@ -1,0 +1,161 @@
+//@import (reference) "//www.w3cschool.cn/statics/demosource/import_reference.less";
+//@import (inline) "//www.w3cschool.cn/statics/demosource/import_inline.css";
+//@import (inline) "_import.less";
+@import (reference) "_import";
+//@import (less) "//www.w3cschool.cn/statics/demosource/less.txt";
+//@import (css) "//www.w3cschool.cn/statics/demosource/css.txt";
+//@import (once) "//www.w3cschool.cn/statics/demosource/once.less";
+//@import (once) "//www.w3cschool.cn/statics/demosource/once.less";
+// @import(once)确保文件只导入一次，并且对该文件将忽略任何以下import语句
+//@import (multiple) "//www.w3cschool.cn/statics/demosource/multiple.less";
+//@import (multiple) "//www.w3cschool.cn/statics/demosource/multiple.less";
+//通过 @import(multiple)，您可以导入具有相同名称的多个文件。（会有重复）
+@import (optional) "fileNotExist.css";
+// 允许您在文件不存在时导入文件，否则会报错
+p {
+  //.style1;
+  ._import_1_class;
+}
+// @import(reference)用于导入外部文件，但不会将导入的样式添加到编译的CSS文件中 , 至编译需要的文件
+// 外部文件
+
+// 条件匹配表达式 Guards（比较运算） LESS包含五个保护比较运算符：<，>，<=，> =和=。 您可以使用比较运算符（=）来比较数字，字符串，标识符等，而剩余的运算符只能与数字一起使用。
+.mixin (@a) when (lightness(@a) >= 50%) {
+  font-size: 14px;
+}
+.mixin (@a) when (lightness(@a) < 50%) {
+  font-size: 16px;
+}
+.mixin (@a) {
+  color: @a;
+}
+.class1 {
+  .mixin(#FF0000)
+}
+.class2 {
+  .mixin(#555)
+}
+// 逻辑运算符 and or not
+._min(@a) when (@a = 20px) or (@a = 30px) {
+  font-size: 50px;
+}
+
+._class1{
+  ._min(20px)
+}
+
+// 类型检查函数
+// 使用类型检查内置函数来确定匹配混合宏的值类型。 为此，您可以使用 is 函数。 以下是可用功能的列表：
+._mix2(@a) when (iscolor(@a)){
+  color:blue;
+}
+._mix2(@a) when (isnumber(@a)){
+  color:red;
+}
+._mix2(@a){
+  font-size:20px;
+}
+._class2{
+  ._mix2(12)
+}
+
+// 使用默认函数将mixin与其他混合匹配进行匹配，并创建 else 或默认 语句
+
+//Guard用于匹配表达式上的简单值或参数个数。 它应用于CSS选择器。 它是用于声明mixin并立即调用它的语法。 要成功地引出 if 类型语句; 将此功能与功能＆结合使用，您可以将多个guards分组。
+// 分组
+@usedScrope : global;
+._mixin() {
+  .cont when (@usedScope=global) {
+    background-color: red;
+    color: black;
+  }
+  .style when (@usedScope=mixin) {
+    background-color: blue;
+    color: white;
+  }
+}
+.test_scope{
+  @usedScope : global;
+  ._mixin();
+}
+
+// less 循环
+// 通过when 递归的方式实现循环
+.cont(@count) when (@count > 0) {
+  .cont((@count - 1));
+  width: (25px * @count);
+}
+div {
+  .cont(7);
+}
+
+// less 特性，合并逗号
+// 通过 属性关键符号+ 创建合并
+// transfrom 属性可使用
+.myfunc() {
+  transform+: matrix(0,0,0,0);
+}
+.class {
+  .myfunc();
+  transform+: matrix(0,0,0,0);
+}
+// 合并空间
+// 使用+_ 符可合并空间space
+.mixin() {
+  transform+_: scale(1);
+}
+.class {
+  .mixin();
+  transform+_: rotate(2deg);
+}
+// 父选择器，使用伪类
+a {
+  color: #5882FA;
+  &:hover {
+    background-color: #A9F5F2;
+  }
+}
+//后代选择器(以空格分隔)
+//子元素选择器(以大于号分隔）
+//相邻兄弟选择器（以加号分隔）
+//普通兄弟选择器（以破折号分隔）后续兄弟选择器
+
+//通过使用＆运算符，可以重复引用父选择器，而不使用其名称。
+.select {
+  & + & {
+    color: #A9F5F2;
+  }
+
+  & & {
+    color: #D0FA58;
+  }
+
+  && {
+    color: #81BEF7;
+  }
+
+  &, &_class1 {
+    color: #A4A4A4;
+  }
+}
+
+.header {
+  .menu {
+    border-radius: 5px;
+    border: 1px solid red;
+    & {
+      padding-left: 200px;
+    }
+  }
+}
+
+// 组合爆炸, ＆可以产生列表中的选择器的所有可能的排列，用逗号分隔。
+p, div {
+  color : red;
+  font-family:Lucida Console;
+  & + & {
+    color : green;
+    background-color: yellow;
+    font-family: "Comic Sans MS";
+  }
+}
