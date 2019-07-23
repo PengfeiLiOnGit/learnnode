@@ -73,4 +73,9 @@ div + div {
   background-color: yellow;
   font-family: "Comic Sans MS";
 }
+body {
+  meter: 100mm;
+  time: 3000ms;
+  no-unit: 5;
+}
 /*# sourceMappingURL=_import2.css.map */
