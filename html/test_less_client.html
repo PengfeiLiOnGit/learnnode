@@ -22,14 +22,70 @@
     .test2{margin-top: 20px;position: relative;top: 20px;/* padding-top: 20px; */border-top: 20px solid;}
 </style>
 <body>
-    <div class="test">
-        <span style="height: 10px;">111</span>
-        <div class="test2">
-            2222
-        </div>
-    </div>
+<!--    <div class="test">-->
+<!--        <span style="height: 10px;">111</span>-->
+<!--        <div class="test2">-->
+<!--            2222-->
+<!--        </div>-->
+<!--    </div>-->
+<input type="file" name="" id="test">
+    <svg width="350" height="160">
+        <g class="layer" transform="translate(60,10)">
+            <circle r="5" cx="0"   cy="105" />
+            <circle r="5" cx="90"  cy="90"  />
+            <circle r="5" cx="180" cy="60"  />
+            <circle r="5" cx="270" cy="0"   />
+
+            <g class="y axis">
+                <line x1="0" y1="0" x2="0" y2="120" />
+                <text x="-40" y="105" dy="5">$10</text>
+                <text x="-40" y="0"   dy="5">$80</text>
+            </g>
+            <g class="x axis" transform="translate(0, 120)">
+                <line x1="0" y1="0" x2="270" y2="0" />
+                <text x="-30"   y="20">January 2014</text>
+                <text x="240" y="20">April</text>
+            </g>
+        </g>
+    </svg>
+    <div id="anim">点击运行动画</div>
 </body>
 <script>
+    document.querySelector('#test').onchange = function(e){
+        readFile(e.target.files[0]);
+    }
+
+    var elem = document.getElementById("anim");
+
+    var startTime = undefined;
+
+    function render(time) {
+        if (time === undefined)
+            time = Date.now();
+        if (startTime === undefined)
+            startTime = time;
+        elem.style.left = ((time - startTime)/10 % 500) + "px";
+    }
+
+    elem.onclick = function() {
+        (function animloop(){
+            render();
+            requestAnimationFrame(animloop);
+        })();
+    };
+
+    function readFile(file){
+
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            // applyDataUrlToCanvas( reader.result );
+            console.log(e)
+        };
+
+        reader.readAsDataURL(file);
+    }
+
     less = {
         env: "development",
         async: false,

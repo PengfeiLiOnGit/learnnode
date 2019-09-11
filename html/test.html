@@ -5,8 +5,31 @@
     <title>Title</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="container">
+<body class="container" onclick="test()">
 <h1>Example using Nested Directives</h1>
 <p class="myclass">LESS enables customizable, manageable and reusable style sheet for web site.</p>
+<a href="http://www.baidu.com">百度</a>
 </body>
+<script>
+    // document.body.addEventListener("click",function () {
+    //     event.stopPropagation();
+    //     alert("body");
+    // },false);
+    let p = document.querySelector('p');
+    p.addEventListener('click ',function () {
+        // event.stopImmediatePropagation()
+        alert("p")
+        return;
+    },false)
+    //
+    // p.addEventListener('click',function () {
+    //     event.stopImmediatePropagation()
+    //     alert("p2")
+    // },false)
+
+    let a = document.querySelector('a');
+    a.addEventListener('click',function () {
+        event.preventDefault();
+    },false)
+</script>
 </html>

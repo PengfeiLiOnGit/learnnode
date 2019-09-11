@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="import" href="">
+</head>
+<body>
+    <custom-button>123</custom-button>
+</body>
+<script>
+    let cs = Object.create(HTMLElement.prototype);
+
+    cs.test = function(){
+        console.log(1)
+    };
+
+    let CustomButtom = document.registerElement('custom-button',{
+        prototype:cs
+    });
+    let button = document.querySelector('custom-button');
+    button.test();
+    console.log(button.textContent)
+</script>
+</html>
