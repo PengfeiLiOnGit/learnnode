@@ -160,4 +160,7 @@ fs.open('./fs_test_link.txt','a',function(err,fd){
 
         })
     });
-})
+});
+
+
+console.log(__dirname)
